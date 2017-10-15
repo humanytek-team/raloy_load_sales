@@ -1,0 +1,272 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* raloy_load_sales
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-09-21 22:47+0000\n"
+"PO-Revision-Date: 2017-09-21 22:47+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: raloy_load_sales
+#: model:ir.model,name:raloy_load_sales.model_sale_asn_wizard
+msgid "ASN Wizard"
+msgstr ""
+
+#. module: raloy_load_sales
+#: model:ir.model.fields,field_description:raloy_load_sales.field_sale_load_wizard2_txt_file
+#: model:ir.model.fields,field_description:raloy_load_sales.field_sale_load_wizard_txt_file
+msgid "Archivo (*.txt)"
+msgstr ""
+
+#. module: raloy_load_sales
+#: model:ir.model.fields,field_description:raloy_load_sales.field_sale_asn_wizard_cadena_decoding
+msgid "Binary"
+msgstr "Binario"
+
+#. module: raloy_load_sales
+#: model:ir.ui.view,arch_db:raloy_load_sales.view_asn_wizard
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: raloy_load_sales
+#: model:ir.ui.view,arch_db:raloy_load_sales.view_asn_wizard
+msgid "Close"
+msgstr "Cerrar"
+
+#. module: raloy_load_sales
+#: model:ir.model.fields,field_description:raloy_load_sales.field_sale_asn_wizard_create_uid
+#: model:ir.model.fields,field_description:raloy_load_sales.field_sale_load_wizard2_create_uid
+#: model:ir.model.fields,field_description:raloy_load_sales.field_sale_load_wizard_create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: raloy_load_sales
+#: model:ir.model.fields,field_description:raloy_load_sales.field_sale_asn_wizard_create_date
+#: model:ir.model.fields,field_description:raloy_load_sales.field_sale_load_wizard2_create_date
+#: model:ir.model.fields,field_description:raloy_load_sales.field_sale_load_wizard_create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: raloy_load_sales
+#: model:ir.model.fields,field_description:raloy_load_sales.field_sale_asn_wizard_display_name
+#: model:ir.model.fields,field_description:raloy_load_sales.field_sale_load_wizard2_display_name
+#: model:ir.model.fields,field_description:raloy_load_sales.field_sale_load_wizard_display_name
+msgid "Display Name"
+msgstr "Nombre a mostrar"
+
+#. module: raloy_load_sales
+#: model:ir.model.fields,field_description:raloy_load_sales.field_sale_asn_wizard_download_file
+msgid "Download"
+msgstr "Descargar"
+
+#. module: raloy_load_sales
+#: model:ir.ui.view,arch_db:raloy_load_sales.view_asn_wizard
+msgid "Download file:"
+msgstr "Descargar archivo:"
+
+#. module: raloy_load_sales
+#: model:ir.ui.menu,name:raloy_load_sales.menu_sale_load_root
+msgid "EDI Load"
+msgstr "Cargar Edi"
+
+#. module: raloy_load_sales
+#: model:utm.source,name:raloy_load_sales.source_local
+msgid "EDI local"
+msgstr "Edi Local"
+
+#. module: raloy_load_sales
+#: model:ir.model.fields,field_description:raloy_load_sales.field_res_partner_edi_load
+#: model:ir.model.fields,field_description:raloy_load_sales.field_res_users_edi_load
+msgid "Edi load"
+msgstr "Cargar Edi"
+
+#. module: raloy_load_sales
+#: model:ir.model.fields,field_description:raloy_load_sales.field_sale_asn_wizard_end_date
+msgid "End date"
+msgstr "Fecha final"
+
+#. module: raloy_load_sales
+#: model:ir.model.fields,field_description:raloy_load_sales.field_sale_asn_wizard_datas_fname
+msgid "File Name"
+msgstr "Nombre archivo"
+
+#. module: raloy_load_sales
+#: model:ir.ui.view,arch_db:raloy_load_sales.view_asn_wizard
+msgid "File ready"
+msgstr "Archivo listo"
+
+#. module: raloy_load_sales
+#: model:ir.ui.view,arch_db:raloy_load_sales.view_asn_wizard
+msgid "Generate"
+msgstr "Generar"
+
+#. module: raloy_load_sales
+#: model:ir.actions.act_window,name:raloy_load_sales.action_asn_file
+#: model:ir.ui.menu,name:raloy_load_sales.menu_asn_file
+msgid "Generate ASN"
+msgstr "Generar ASN"
+
+#. module: raloy_load_sales
+#: model:ir.ui.view,arch_db:raloy_load_sales.view_asn_wizard
+msgid "Generate ASN File"
+msgstr "Generar archivo ASN"
+
+#. module: raloy_load_sales
+#: model:ir.model.fields,field_description:raloy_load_sales.field_sale_asn_wizard_id
+#: model:ir.model.fields,field_description:raloy_load_sales.field_sale_load_wizard2_id
+#: model:ir.model.fields,field_description:raloy_load_sales.field_sale_load_wizard_id
+msgid "ID"
+msgstr ""
+
+#. module: raloy_load_sales
+#: model:ir.model.fields,help:raloy_load_sales.field_res_partner_edi_load
+#: model:ir.model.fields,help:raloy_load_sales.field_res_users_edi_load
+msgid "If checked, appears as an option for sale loads"
+msgstr "Si se marca, aparesera como opcion en carga EDI"
+
+#. module: raloy_load_sales
+#: model:ir.model.fields,field_description:raloy_load_sales.field_sale_asn_wizard___last_update
+#: model:ir.model.fields,field_description:raloy_load_sales.field_sale_load_wizard2___last_update
+#: model:ir.model.fields,field_description:raloy_load_sales.field_sale_load_wizard___last_update
+msgid "Last Modified on"
+msgstr "Fecha ultima modificacion"
+
+#. module: raloy_load_sales
+#: model:ir.model.fields,field_description:raloy_load_sales.field_sale_asn_wizard_write_uid
+#: model:ir.model.fields,field_description:raloy_load_sales.field_sale_load_wizard2_write_uid
+#: model:ir.model.fields,field_description:raloy_load_sales.field_sale_load_wizard_write_uid
+msgid "Last Updated by"
+msgstr "Ultima actualizacion por"
+
+#. module: raloy_load_sales
+#: model:ir.model.fields,field_description:raloy_load_sales.field_sale_asn_wizard_write_date
+#: model:ir.model.fields,field_description:raloy_load_sales.field_sale_load_wizard2_write_date
+#: model:ir.model.fields,field_description:raloy_load_sales.field_sale_load_wizard_write_date
+msgid "Last Updated on"
+msgstr "Ultima actualizacion en"
+
+#. module: raloy_load_sales
+#: model:ir.model.fields,field_description:raloy_load_sales.field_sale_asn_wizard_file
+msgid "Layout"
+msgstr ""
+
+#. module: raloy_load_sales
+#: model:ir.ui.view,arch_db:raloy_load_sales.view_sale_load_wizard
+#: model:ir.ui.view,arch_db:raloy_load_sales.view_sale_load_wizard2
+msgid "Load file"
+msgstr "Cargar archivo"
+
+#. module: raloy_load_sales
+#: model:ir.model.fields,field_description:raloy_load_sales.field_product_product_manufacturer_product_ref
+#: model:ir.model.fields,field_description:raloy_load_sales.field_product_template_manufacturer_product_ref
+msgid "Manufacturer Code"
+msgstr "Codigo de productor"
+
+#. module: raloy_load_sales
+#: model:ir.model.fields,field_description:raloy_load_sales.field_product_product_manufacturer_product_name
+#: model:ir.model.fields,field_description:raloy_load_sales.field_product_template_manufacturer_product_name
+msgid "Manufacturer Name"
+msgstr "Nombre de productor"
+
+#. module: raloy_load_sales
+#: model:ir.model,name:raloy_load_sales.model_res_partner
+#: model:ir.model.fields,field_description:raloy_load_sales.field_sale_asn_wizard_partner_id
+#: model:ir.model.fields,field_description:raloy_load_sales.field_sale_load_wizard2_partner_id
+msgid "Partner"
+msgstr "Empresa"
+
+#. module: raloy_load_sales
+#: code:addons/raloy_load_sales/sale_load.py:29
+#: code:addons/raloy_load_sales/sale_load2.py:41
+#, python-format
+msgid "Partner not found, ref: "
+msgstr "Empresa no encontrada, referencia"
+
+#. module: raloy_load_sales
+#: code:addons/raloy_load_sales/asn.py:96
+#, python-format
+msgid "Picking does not have a SO, ref: "
+msgstr "Albaran no tiene un pedido de ventas ligado, referencia:"
+
+#. module: raloy_load_sales
+#: model:ir.ui.view,arch_db:raloy_load_sales.view_sale_load_wizard
+#: model:ir.ui.view,arch_db:raloy_load_sales.view_sale_load_wizard2
+msgid "Please select file to load"
+msgstr "Elija un archivo a cargar"
+
+#. module: raloy_load_sales
+#: model:ir.model,name:raloy_load_sales.model_product_template
+msgid "Product Template"
+msgstr ""
+
+#. module: raloy_load_sales
+#: code:addons/raloy_load_sales/sale_load.py:41
+#: code:addons/raloy_load_sales/sale_load2.py:58
+#, python-format
+msgid "Product not found, ref: "
+msgstr "Producto no encontrado, referencia: "
+
+#. module: raloy_load_sales
+#: code:addons/raloy_load_sales/sale_load.py:127
+#: code:addons/raloy_load_sales/sale_load2.py:169
+#, python-format
+msgid "Quotations"
+msgstr "Presupuestos"
+
+#. module: raloy_load_sales
+#: model:ir.ui.menu,name:raloy_load_sales.menu_sale_load_action2
+msgid "SO Idemitsu / Honda"
+msgstr ""
+
+#. module: raloy_load_sales
+#: model:ir.actions.act_window,name:raloy_load_sales.action_sale_load
+msgid "Sale Load"
+msgstr "Cargar pedidos"
+
+#. module: raloy_load_sales
+#: model:ir.actions.act_window,name:raloy_load_sales.action_sale_load2
+msgid "Sale Load2"
+msgstr "Cargar pedidos2"
+
+#. module: raloy_load_sales
+#: model:ir.ui.menu,name:raloy_load_sales.menu_sale_load_action
+#: model:ir.ui.view,arch_db:raloy_load_sales.view_sale_load_wizard
+#: model:ir.ui.view,arch_db:raloy_load_sales.view_sale_load_wizard2
+msgid "Sale load"
+msgstr "Cargar pedidos"
+
+#. module: raloy_load_sales
+#: model:ir.model.fields,help:raloy_load_sales.field_sale_load_wizard2_txt_file
+#: model:ir.model.fields,help:raloy_load_sales.field_sale_load_wizard_txt_file
+msgid "Seleccione el archivo a cargar (*.txt)"
+msgstr ""
+
+#. module: raloy_load_sales
+#: model:ir.model.fields,field_description:raloy_load_sales.field_sale_asn_wizard_start_date
+msgid "Start date"
+msgstr "Fecha inicial"
+
+#. module: raloy_load_sales
+#: model:ir.ui.view,arch_db:raloy_load_sales.view_sale_load_wizard
+#: model:ir.ui.view,arch_db:raloy_load_sales.view_sale_load_wizard2
+msgid "cancel"
+msgstr "Cancelar"
+
+#. module: raloy_load_sales
+#: model:ir.model,name:raloy_load_sales.model_sale_load_wizard
+msgid "sale.load.wizard"
+msgstr ""
+
+#. module: raloy_load_sales
+#: model:ir.model,name:raloy_load_sales.model_sale_load_wizard2
+msgid "sale.load.wizard2"
+msgstr ""
+

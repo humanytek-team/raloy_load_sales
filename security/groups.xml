@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+    <record id="carta_porte_lectura" model="res.groups"> 
+		<field name="name">Carta Porte - lectura</field>
+	</record>
+
+    <record model="res.groups" id="base.group_user">
+    	<field name="implied_ids" eval="[(4, ref('carta_porte_lectura'))]"/>
+    </record>
+
+	<record id="carta_porte_usuario" model="res.groups"> 
+		<field name="name">Carta Porte - usuario</field>
+		<field name="implied_ids" eval="[(4, ref('carta_porte_lectura'))]"/>
+	</record>
+
+	<record id="carta_porte_admin" model="res.groups"> 
+		<field name="name">Carta Porte - Responsable</field>
+		<field name="implied_ids" eval="[(4, ref('carta_porte_usuario'))]"/>
+	</record>
+	
+    </data>
+</openerp>

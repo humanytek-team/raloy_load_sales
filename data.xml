@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<openerp>
+	<data noupdate="1">
+
+
+		<record id="source_local" model="utm.source">
+			<field name="name">EDI local</field>
+		</record>
+
+
+	</data>
+</openerp>

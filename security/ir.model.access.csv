@@ -1,0 +1,6 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+carta_porte_r,carta_porte_r,model_carta_porte,carta_porte_lectura,1,0,0,0
+carta_porte_line_r,carta_porte_line_r,model_carta_porte_line,carta_porte_lectura,1,0,0,0
+carta_porte_x,carta_porte_x,model_carta_porte,carta_porte_usuario,1,1,1,0
+carta_porte_line_x,carta_porte_line_x,model_carta_porte_line,carta_porte_usuario,1,1,1,1
+carta_porte_a,carta_porte_a,model_carta_porte,carta_porte_admin,1,1,1,1

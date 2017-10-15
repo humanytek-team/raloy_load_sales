@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+
+        <record id="view_sale_load_wizard" model="ir.ui.view">
+            <field name="name">view_sale_load_wizard</field>
+            <field name="model">sale.load.wizard</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Sale load" >
+                    <sheet >
+                        <separator colspan="4" string="Please select file to load"/>
+                        <group>
+                            <field name="txt_file" required="1"/>
+                        </group>
+                        
+                    </sheet>
+                    <footer>
+                        <center>
+                            <button name="action_load" string="Load file" type="object" />
+
+                            <button string="cancel" class="oe_link" special="cancel" />
+                        </center>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="view_sale_load_wizard2" model="ir.ui.view">
+            <field name="name">view_sale_load_wizard2</field>
+            <field name="model">sale.load.wizard2</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Sale load" >
+                    <sheet >
+                        <separator colspan="4" string="Please select file to load"/>
+                        <group>
+                            <field name="txt_file" required="1"/>
+                            <field name="partner_id" required="1"/>
+                        </group>
+                        
+                    </sheet>
+                    <footer>
+                        <center>
+                            <button name="action_load" string="Load file" type="object" />
+
+                            <button string="cancel" class="oe_link" special="cancel" />
+                        </center>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+
+
+        <record id="view_asn_wizard" model="ir.ui.view">
+            <field name="name">view_asn_wizard</field>
+            <field name="model">sale.asn.wizard</field>
+            <field name="priority">2</field>
+            <field name="arch" type="xml">
+                <form string="Generate ASN File" create="false" edit="false">
+                    <header>
+                        <field name="datas_fname" invisible="1" />
+                        <field name="download_file" invisible="1" />
+                    </header>
+
+                    <sheet attrs="{'invisible':[('download_file','=',True)]}">
+                        <separator colspan="4" />
+                        <group>
+                            <field name="partner_id" />
+                            <field name="start_date" />
+                            <field name="end_date" />
+                        </group>
+                    </sheet>
+                    <sheet attrs="{'invisible':[('download_file','=',False)]}">
+                        <div >
+                            <h2>File ready</h2>
+                            <p>Download file: <field name="file" readonly="1" filename="datas_fname"/></p>
+                        </div>
+                    </sheet>
+                    <footer attrs="{'invisible':[('download_file','=',False)]}">
+                        <center>
+                            
+                            <button string="Close" special="cancel" class="oe_highlight"/>
+                        </center>
+                    </footer>
+                    <footer attrs="{'invisible':[('download_file','=',True)]}">
+                        <center>
+                            <button name="calculate" string="Generate" type="object" />
+                            o
+                            <button string="Cancel" class="oe_link" special="cancel" />
+                        </center>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+
+        <act_window
+            name="Sale Load"
+            res_model="sale.load.wizard"
+            src_model="sale.load.wizard"
+            view_mode="form" target="new"
+            key2="client_action_multi"
+            id="action_sale_load"/>
+
+        <act_window
+            name="Sale Load2"
+            res_model="sale.load.wizard2"
+            src_model="sale.load.wizard2"
+            view_mode="form" target="new"
+            key2="client_action_multi"
+            id="action_sale_load2"/>
+
+        <act_window
+            name="Generate ASN"
+            res_model="sale.asn.wizard"
+            src_model="sale.asn.wizard"
+            view_mode="form" target="new"
+            key2="client_action_multi"
+            id="action_asn_file"/>
+
+        <menuitem name="EDI Load" id="menu_sale_load_root" parent="sales_team.menu_base_partner" />
+        <menuitem name="Sale load" action="action_sale_load" id="menu_sale_load_action" parent="menu_sale_load_root" />
+        <menuitem name="SO Idemitsu / Honda" action="action_sale_load2" id="menu_sale_load_action2" parent="menu_sale_load_root" />
+        <menuitem name="Generate ASN" action="action_asn_file" id="menu_asn_file" parent="menu_sale_load_root" />
+        <!-- <menuitem name="Sale load" action="action_sale_load" id="menu_sale_load_action" parent="sales_team.menu_sales" />
+        <menuitem name="SO Idemitsu / Honda" action="action_sale_load2" id="menu_sale_load_action2" parent="sales_team.menu_sales" /> -->
+
+    </data>
+</openerp>
