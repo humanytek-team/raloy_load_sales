@@ -36,6 +36,18 @@ class SaleLoadWizard(models.TransientModel):
 
         return partner
 
+    def search_contact(self,partner_id,contact_name):
+        partner = False
+        po = self.env['res.partner']
+        res = po.search([('name', '=', contact_name),('parent_id', '=', partner_id.id)])
+        if len(res) > 0:
+            partner = res[0]
+
+        if partner == False:
+            raise ValidationError(_('Contact not found, ref: '+contact_name))
+
+        return partner
+
     def search_product(self,ref):
         product = False
         pp = self.env['product.product']
@@ -63,6 +75,8 @@ class SaleLoadWizard(models.TransientModel):
         #print 'date!!!: ',date
         return date
 
+
+
     def action_load(self):
         """
         reads file and loads sale orders
@@ -72,19 +86,22 @@ class SaleLoadWizard(models.TransientModel):
         so_fields = [] #WILL CONTAIN FIELDS FOR SALE ORDER, EACH ELEMENT IS A SALE ORDER
         order_lines = []
         fields = {}
+        dates = [] # WILL CONTAIN COMMITMENT DATES
         source = self.get_source()
         file_txt = base64.decodestring(self.txt_file)
         line_n = 1 #LINE NUMBER
 
         for line in file_txt.splitlines():
             elements = line.split()
-    
+            #print 'elements: ',elements
             if len(elements) > 0:
                 if elements[0] == 'R':
 
                     if line_n > 1:
                         fields['order_line'] = order_lines
                         so_fields.append(fields)
+
+                        dates.append(fields['commitment_date'])
 
                         fields = {}
                         order_lines = []
@@ -100,15 +117,22 @@ class SaleLoadWizard(models.TransientModel):
                     order_name = elements[2]
                     commitment_date = elements[3]
 
+                    delivery = False
+                    if len(elements) >= 5:
+                        delivery = ' '.join(elements[4:])
+                        delivery = self.search_contact(partner,delivery)
+                        #print 'delivery: ',delivery.name
+
                     #ASIGN USERS TIMEZONE TO DATE
                     #"%Y-%m-%d %H:%M:%S"
                     commitment_date =self.convert_strdate_toserver(commitment_date)
-
+                    #print 'commitment_date: ',commitment_date
                     #raise ValidationError(_('!!!!'))
 
                     fields = {
-                        'name':order_name,
+                        #'name':order_name,
                         'partner_id':partner.id,
+                        'client_order_ref':order_name,
                         'fiscal_position_id':fiscal_position_id,
                         'pricelist_id': partner.property_product_pricelist and partner.property_product_pricelist.id or False,
                         'payment_term_id': partner.property_payment_term_id and partner.property_payment_term_id.id or False,
@@ -116,6 +140,8 @@ class SaleLoadWizard(models.TransientModel):
                         'source_id': source,
                         'commitment_date': commitment_date,
                     }
+                    if delivery:
+                        fields['partner_shipping_id'] = delivery.id
                 else: 
                     product_qty = elements[0]
                     product_ref = elements[1]
@@ -131,7 +157,8 @@ class SaleLoadWizard(models.TransientModel):
 
         #SE AGREGA LA ULTIMA SO
         fields = {
-            'name':order_name,
+            #'name':order_name,
+            'client_order_ref':order_name,
             'partner_id':partner.id,
             'fiscal_position_id':fiscal_position_id,
             'pricelist_id': partner.property_product_pricelist and partner.property_product_pricelist.id or False,
@@ -141,12 +168,24 @@ class SaleLoadWizard(models.TransientModel):
             'commitment_date': commitment_date,
             'order_line':order_lines,
         }
+        if delivery:
+            fields['partner_shipping_id'] = delivery.id
         so_fields.append(fields)
-
+        dates.append(fields['commitment_date'])
+        #print 'so_fields: ',so_fields
+        #print 'dates: ',dates
         #CREATE NEW SALE ORDERS
         sale_orders = map(lambda fields:so.create(fields), so_fields)
 
-        #print 'sale_orders: ',sale_orders
+
+        #UPDATE commitment_date
+        #HAS TO BE UPDATED AFTER CREATION
+        for index, value in enumerate(sale_orders):
+            #print sale_orders[index].name
+            #print sale_orders[index].commitment_date
+            #print dates[index]
+            sale_orders[index].commitment_date = dates[index]
+
         #CONFIRM SO
         map(lambda order:self.action_load_confirm(order), sale_orders)
         
