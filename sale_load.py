@@ -111,8 +111,10 @@ class SaleLoadWizard(models.TransientModel):
                     partner = self.search_partner(partner_ref)
 
                     #GET FISCAL POSITION
-                    addr = partner.address_get(['delivery', 'invoice'])
-                    fiscal_position_id = afp.get_fiscal_position(partner.id, addr['delivery'])
+                    #addr = partner.address_get(['delivery', 'invoice'])
+                    #print 'delivery addres: ',addr['delivery']
+                    fiscal_position_id = afp.get_fiscal_position(partner.id, partner.id)
+                    #print 'fiscal_position_id: ',fiscal_position_id
 
                     order_name = elements[2]
                     commitment_date = elements[3]
@@ -122,6 +124,8 @@ class SaleLoadWizard(models.TransientModel):
                         delivery = ' '.join(elements[4:])
                         delivery = self.search_contact(partner,delivery)
                         #print 'delivery: ',delivery.name
+                        fiscal_position_id = afp.get_fiscal_position(partner.id, delivery.id)
+                        #print 'fiscal_position_id222: ',fiscal_position_id
 
                     #ASIGN USERS TIMEZONE TO DATE
                     #"%Y-%m-%d %H:%M:%S"
@@ -142,6 +146,8 @@ class SaleLoadWizard(models.TransientModel):
                     }
                     if delivery:
                         fields['partner_shipping_id'] = delivery.id
+                    else:
+                        fields['partner_shipping_id'] = partner.id
                 else: 
                     product_qty = elements[0]
                     product_ref = elements[1]
@@ -170,6 +176,9 @@ class SaleLoadWizard(models.TransientModel):
         }
         if delivery:
             fields['partner_shipping_id'] = delivery.id
+        else:
+            fields['partner_shipping_id'] = partner.id
+
         so_fields.append(fields)
         dates.append(fields['commitment_date'])
         #print 'so_fields: ',so_fields
