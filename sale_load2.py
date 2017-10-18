@@ -121,7 +121,7 @@ class SaleLoadWizard2(models.TransientModel):
                 fiscal_position_id = afp.get_fiscal_position(partner.id, partner_delivery.id)
 
                 fields = {
-                    'name':XLORDN,
+                    #'name':XLORDN,
                     'partner_id':partner.id,
                     'partner_shipping_id': partner_delivery.id,
                     'fiscal_position_id':fiscal_position_id,
