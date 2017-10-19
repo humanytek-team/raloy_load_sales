@@ -123,6 +123,7 @@ class SaleLoadWizard2(models.TransientModel):
                 fields = {
                     #'name':XLORDN,
                     'partner_id':partner.id,
+                    'client_order_ref':XLORDN,
                     'partner_shipping_id': partner_delivery.id,
                     'fiscal_position_id':fiscal_position_id,
                     'pricelist_id': partner.property_product_pricelist and partner.property_product_pricelist.id or False,
