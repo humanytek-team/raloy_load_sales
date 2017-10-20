@@ -112,9 +112,11 @@ class SaleAsnWizard(models.TransientModel):
             sale_ids = sale_obj.search([('procurement_group_id','=',picking.group_id.id)])
             if not sale_ids:
                 raise ValidationError(_('Picking does not have a SO, ref: '+picking.name))
-            sale_name = sale_ids[0].name
-            sale_name = sale_name.replace(sale_suffix,'')
-            sale_name = sale_name.replace(sale_prefix,'')
+            # sale_name = sale_ids[0].name
+            # sale_name = sale_name.replace(sale_suffix,'')
+            # sale_name = sale_name.replace(sale_prefix,'')
+
+            client_order_ref = sale_ids[0].client_order_ref 
             
             #ENSAMBLE STRING
             #PICKING HEADER
@@ -127,7 +129,7 @@ class SaleAsnWizard(models.TransientModel):
             write_date = datetime.strptime(write_date, "%Y-%m-%d %H:%M:%S").strftime('%y%m%d')
             data = data + write_date
             data = data + 'T'
-            data = data + self.format_element(size=5,element=sale_name)
+            data = data + self.format_element(size=5,element=client_order_ref,filler='0',f_side=False)
             data = data + delivery_suffix
             data = data + self.format_element(size=44)
             data = data + '\n'
@@ -138,7 +140,7 @@ class SaleAsnWizard(models.TransientModel):
                 if line_n > 2:
                     break
                 data = data + '4270105'
-                data = data + self.format_element(size=5,element=sale_name)
+                data = data + self.format_element(size=5,element=client_order_ref,filler='0',f_side=False)
                 data = data + delivery_suffix
                 data = data + '01'
                 data = data + self.format_element(size=4,element=line_n,f_side=False,filler='0') + '0'
@@ -146,6 +148,8 @@ class SaleAsnWizard(models.TransientModel):
                 data = data + self.format_element(size=5,element=move.product_id.manufacturer_product_ref,filler='0',f_side=False)
                 #data = data + 'A'#A = AUTOS, M=MOTOS, P=PRODUCTOS DE FUERZA
                 data = data + self.format_element(size=1,element=move.product_id.manufacturer_product_type)
+                if not move.product_id.manufacturer_product_name:
+                    raise ValidationError(_('Product does not have manufacturer product name defined: '+move.product_id.name))
                 data = data + self.format_element(size=13,element=move.product_id.manufacturer_product_name)
                 data = data + self.format_element(size=5,\
                     element=int(abs(move.product_uom_qty*move.product_id.manufacturer_product_ref)),filler='0',f_side=False)
