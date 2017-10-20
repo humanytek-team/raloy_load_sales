@@ -116,7 +116,9 @@ class SaleAsnWizard(models.TransientModel):
             # sale_name = sale_name.replace(sale_suffix,'')
             # sale_name = sale_name.replace(sale_prefix,'')
 
-            client_order_ref = sale_ids[0].client_order_ref 
+            client_order_ref = sale_ids[0].client_order_ref
+            if client_order_ref == False:
+                client_order_ref = '     '
             
             #ENSAMBLE STRING
             #PICKING HEADER
@@ -129,7 +131,7 @@ class SaleAsnWizard(models.TransientModel):
             write_date = datetime.strptime(write_date, "%Y-%m-%d %H:%M:%S").strftime('%y%m%d')
             data = data + write_date
             data = data + 'T'
-            data = data + self.format_element(size=5,element=client_order_ref,filler='0',f_side=False)
+            data = data + self.format_element(size=5,element=client_order_ref,filler=' ',f_side=False)
             data = data + delivery_suffix
             data = data + self.format_element(size=44)
             data = data + '\n'
